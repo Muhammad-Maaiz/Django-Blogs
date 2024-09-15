@@ -6,20 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Blog</title>
     <link rel="stylesheet" href="{% static 'updateblogs.css' %}">
-
 </head>
 <body>
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         <h1>Update Blog</h1>
         {% csrf_token %}
+        
+        <!-- Placing the image inside the form -->
+        <div class="image-container">
+            <img src="/media/{{ updateblog.blog_image }}" alt="{{ updateblog.blog_title }}" class="blog-image" width=390>
+        </div><br><br>
+
+        <label for="blog_image">Upload Image:</label>
+        <input type="file" id="blog_image" name="blog_image" value="/media/{{ updateblog.blog_image }}"><br><br>
+
+        <!-- Blog title input -->
         <label for="blog_title">Blog Title:</label>
         <input type="text" id="blog_title" name="blog_title" value="{{ updateblog.blog_title }}" required><br><br>
         
-        <label for=" blog_content">Blog Content:</label>
-        <textarea id="blog_content" name="blog_content" required rows=10 cols=50>{{ updateblog.blog_content }}</textarea>"<br><br>
+        <!-- Blog content input -->
+        <label for="blog_content">Blog Content:</label>
+        <textarea id="blog_content" name="blog_content" required rows="12" cols="50">{{ updateblog.blog_content }}</textarea><br><br>
 
-        <button type="Submit">Update Blog</button>
-
+        <!-- Submit button -->
+        <button type="submit">Update Blog</button>
     </form>
 </body>
 </html>

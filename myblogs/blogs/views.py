@@ -28,6 +28,12 @@ def update_blog(request, id):
         # Updating the blog with new data
         updateblog.blog_title = blog_title
         updateblog.blog_content = blog_content
+        blog_image = request.FILES.get('blog_image')
+
+        # Only update the image if a new one is uploaded
+        if blog_image:
+            updateblog.blog_image = blog_image
+
         updateblog.save()
         return redirect('blogsdetail',id=id)
 
