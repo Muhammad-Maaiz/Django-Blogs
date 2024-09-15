@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+/* Delete button with red color */
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: rgb(252, 10, 10); /* Red color for delete button */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: rgb(252, 10, 10); 
+}
+
+/* Cancel button with green color */
+a button {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green color for cancel button */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+a button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}

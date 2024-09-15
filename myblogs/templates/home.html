@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+
+</head>
+<body>
+    <h1>Welcome To Blog App</h1>
+    <div class="nav-container">
+        <a href="{% url 'addblog' %}">Add Blog</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a style="Background-color: rgb(252, 10, 10)" href="{% url 'logout' %}">Logout</a>
+    </div>
+    <hr>
+    {% for post in posts%}
+        <a href="/blogsdetail/{{post.id}}">{{post.blog_title}} by {{post.blog_author}}</a>
+        <br><br>
+    {% empty %}
+        <p>No Blogs Avaliable</p>
+    {% endfor %}
+</body>
+</html>

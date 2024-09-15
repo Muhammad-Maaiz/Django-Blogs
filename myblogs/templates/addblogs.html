@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Blog</title>
+    <link rel="stylesheet" href="{% static 'addblogs.css' %}">
+
+</head>
+<body>
+    <form method="POST" enctype="multipart/form-data">
+        <h1>Add New Blog</h1>
+        {% csrf_token %}
+        <label for="blog_title">Blog Title:</label>
+        <input type="text" id="blog_title" name="blog_title" required><br><br>
+        
+        <label for=" blog_content">Blog Content:</label>
+        <textarea id="blog_content" name="blog_content" required rows=10 cols=50></textarea><br><br>
+
+        <label for="blog_image">Upload Image:</label>
+        <input type="file" id="blog_image" name="blog_image" required><br><br>
+
+        <button type="Submit">Add Blog</button>
+        <br>
+        <p>{{result}}</p>
+        <a href="{% url 'home' %}">Back to Home</a>
+    </form>
+
+</body>
+</html>

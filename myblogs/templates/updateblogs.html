@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Blog</title>
+    <link rel="stylesheet" href="{% static 'updateblogs.css' %}">
+
+</head>
+<body>
+    <form method="POST">
+        <h1>Update Blog</h1>
+        {% csrf_token %}
+        <label for="blog_title">Blog Title:</label>
+        <input type="text" id="blog_title" name="blog_title" value="{{ updateblog.blog_title }}" required><br><br>
+        
+        <label for=" blog_content">Blog Content:</label>
+        <textarea id="blog_content" name="blog_content" required rows=10 cols=50>{{ updateblog.blog_content }}</textarea>"<br><br>
+
+        <button type="Submit">Update Blog</button>
+
+    </form>
+</body>
+</html>

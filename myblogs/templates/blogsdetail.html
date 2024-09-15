@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs Details</title>
+    <link rel="stylesheet" href="{% static 'blogsdetail.css' %}">
+
+</head>
+<body>
+    <div>
+        <img src="/media/{{blogs.blog_image}}" alt="Blog Image" width=450></h2>
+        <h2>Title : {{blogs.blog_title}}</h2>
+        <h3>Author : {{blogs.blog_author}}</h3>
+        <h3>Created At : {{blogs.blog_created_at}}</h3>
+        <p>{{blogs.blog_content}}</p>
+        <!-- Check if the logged-in user is the author of the post -->
+        {% if current_user == blogs.blog_author %}
+            <a href="{% url 'updateblog' blogs.id %}"><button>Update</button></a>
+            &nbsp;&nbsp;&nbsp;   <!--Add space between update and delete button-->
+            <a href="{% url 'deleteblog' blogs.id %}"><button>Delete</button></a>
+        {% endif %}
+        <br><br>
+        <a href="{% url 'home' %}">Back to Home</a>
+        
+    </div>
+</body>
+</html>
