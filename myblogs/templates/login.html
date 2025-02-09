@@ -6,30 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="{% static 'login.css' %}">
-
 </head>
 <body>
-    <form method="POST">
-        {% csrf_token %}
+    <div class="login-container">
+        <form method="POST" class="login-form">
+            {% csrf_token %}
 
-        <h1>Login</h1>
-        <!-- Display error message when username and password are incorrect -->
-        <p style="color:red">{{result}}</p>
-        <!-- Username Input -->
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required>
-        <br><br>
-        <!-- Password Input -->
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required>
-        <br><br>
-        <!-- Submit Button -->
-        <button type="submit">Login</button>
-        <br>
-        <!-- If not account -->
-        <p>Dont have an account <a href="{% url 'signup' %}">Signup</a></p>
-    </form>
+            <h1>Login</h1>
+            <!-- Display error message when username and password are incorrect -->
+            <p class="error-message">{{ error }}</p>
 
+            <!-- Username Input -->
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" required>
+            </div>
 
+            <!-- Password Input -->
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="login-btn">Login</button>
+
+            <!-- Signup Link -->
+            <p class="signup-text">Don't have an account? <a href="{% url 'signup' %}">Signup</a></p>
+        </form>
+    </div>
 </body>
 </html>

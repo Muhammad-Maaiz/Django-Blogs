@@ -1,101 +1,158 @@
-/* General reset */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
+/* Body and Main Background */
+body, html {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
-    padding: 20px;
-}
-
-/* Main heading */
-h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 2.5rem;
-    letter-spacing: 1px;
-}
-
-/* Navigation for adding blogs */
-a {
-    display: inline-block;
-    text-decoration: none;
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    font-size: 1.2rem;
-    transition: background-color 0.3s ease;
-}
-
-a:hover {
-    background-color: #4CAF50;
-}
-
-hr {
-    border: 1px solid #ddd;
-    margin: 20px 0;
-}
-
-.nav-container {
-    text-align: center;
-    margin-bottom: 20px; /* Adjust this margin if needed */
-}
-
-
-/* Blog posts */
-.blog-container {
+    background-color: #1f1f1f !important; /* Ensure full grey background */
+    color: #f1f1f1 !important;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
-.blog-container a {
-    background-color: #ffffff;
-    padding: 15px;
-    border-radius: 8px;
-    width: 80%;
-    margin: 10px 0;
-    color: #4CAF50;
-    font-weight: bold;
+/* Ensure No White Background Anywhere */
+div, section, header, footer, main, article, aside, nav {
+    background-color: #1f1f1f !important;
+    color: #f1f1f1 !important;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #1f1f1f !important; /* Dark grey navbar */
+    padding: 15px 20px;
+}
+
+.navbar-brand {
+    font-size: 2rem !important; /* Increased font size */
+    color: #f1f1f1 !important; /* Ensure white text */
+}
+
+/* Hamburger Icon White */
+.navbar-toggler {
+    border: none !important; /* Remove border */
+}
+
+.navbar-toggler-icon {
+    color: #fff !important; /* Make icon white */
+    /* filter: invert(1); Invert color to white */
+    font-size: 24px; /* Increase size if needed */
+}
+
+
+/* Navbar Links */
+.navbar-nav {
+    display: flex;
+    gap: 20px; /* Added space between Add Blog & Logout */
+}
+
+/* Buttons (Add Blog & Logout) */
+.nav-link {
+    background-color: #ff7b00 !important;
+    color: #f1f1f1 !important;
+    padding: 8px 15px;
+    border-radius: 5px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, box-shadow 0.3s;
+    transition: 0.3s ease;
 }
 
-.blog-container a:hover {
+.nav-link:hover {
+    background-color: grey !important;
+    color: #f1f1f1 !important;
+}
+
+/* Logout Button */
+.logout-btn {
+    background-color: #ff7b00 !important;
+}
+
+.logout-btn:hover {
+    background-color: grey !important;
+}
+
+/* Blog Cards */
+.blog-card {
+    background-color: #222 !important; /* Slightly different grey for contrast */
+    color: #f1f1f1 !important;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.8);
 }
 
-.blog-container a:active {
-    transform: translateY(0px);
+.blog-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #f1f1f1 !important;
 }
 
-/* No blogs available message */
-p {
+.blog-card p {
+    font-size: 1rem;
+    color: #f1f1f1 !important;
+    margin: 5px;
+}
+
+/* Read More Button */
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: #ff7b00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+/* No blogs message */
+.no-blogs {
     text-align: center;
-    color: #888;
-    font-size: 1.2rem;
-    margin-top: 30px;
+    font-size: 1.5rem;
+    margin-top: 20px;
+    color: #f1f1f1;
 }
 
-/* Media query for smaller devices */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2rem;
+/* Footer */
+.footer {
+    background-color: #121212 !important;
+    color: #f1f1f1 !important;
+    text-align: center;
+    padding: 10px;
+    margin-top: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .navbar-nav {
+        text-align: center;
+        width: 100%;
+        display: block;
     }
 
-    .blog-container a {
+    .navbar-nav .nav-item {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-card {
         width: 100%;
     }
+}
 
-    a {
-        font-size: 1rem;
+@media (max-width: 480px) {
+    .navbar-brand {
+        font-size: 1.8rem;
     }
 }

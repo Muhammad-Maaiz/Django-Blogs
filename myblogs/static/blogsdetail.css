@@ -1,59 +1,158 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Poppins', sans-serif;
+    background-color: #1f1f1f; /* Dark Theme */
+    color: #f1f1f1;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
 }
 
-div {
-    background-color: white;
+/* Centering Card */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Blog Detail Card */
+.blog-detail-card {
+    background-color: #222;
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    width: 500px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Blog Image (Center) */
+.blog-image-wrapper {
     text-align: center;
 }
 
-img {
-    display: inline-block; /* Aligns image in the center */
+.blog-image {
     max-width: 100%;
-    height: auto;
-    margin: 20px auto; /* Center the image horizontally */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease-in-out;
 }
 
-h2, h3, p {
-    color: #333;
+.blog-image:hover {
+    transform: scale(1.05);
 }
 
-button {
-    background-color:  #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    margin: 10px;
-    cursor: pointer;
+/* Blog Title (Left Aligned) */
+.blog-title {
+    color: #f1f1f1;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: left;
 }
 
-button:hover {
-    background-color:  #4CAF50;
-
+/* Blog Author & Date (Left Aligned) */
+.blog-author, .blog-date {
+    font-size: 16px;
+    font-weight: bold;
+    color: #f1f1f1;
+    margin-bottom: 10px;
+    text-align: left;
 }
 
-a {
+/* Blog Content (Left Aligned) */
+.blog-content {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #f1f1f1;
+    margin-top: 20px;
+    text-align: left;
+}
+
+/* Buttons (Center) */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+/* Update Button */
+.btn-edit {
+    background-color: #ff7b00;
+    color: #f1f1f1;
+    padding: 12px 18px;
+    font-size: 16px;
+    border-radius: 6px;
     text-decoration: none;
-    color:  #4CAF50;
+    font-weight: bold;
 }
 
-a button {
-    background-color:  #4CAF50;
+.btn-edit:hover {
+    background-color: grey;
 }
 
-a button:hover {
-    background-color:  #4CAF50;
+/* Delete Button */
+.btn-delete {
+    background-color: #ff7b00;
+    color: #f1f1f1;
+    padding: 12px 18px;
+    font-size: 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-delete:hover {
+    background-color: grey;
+}
+
+/* Back to Home Link (Left Aligned) */
+.back-link {
+    color: #ff7b00;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.back-to-home {
+    display: inline-block;
+    margin-top: 10px;
+    color: #ff7b00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-to-home:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .blog-detail-card {
+        padding: 20px;
+        max-width: 95%;
+    }
+
+    .blog-title {
+        font-size: 24px;
+    }
+
+    .blog-author, .blog-date, .blog-content {
+        font-size: 16px;
+    }
 }

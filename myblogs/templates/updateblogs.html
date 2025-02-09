@@ -8,28 +8,37 @@
     <link rel="stylesheet" href="{% static 'updateblogs.css' %}">
 </head>
 <body>
-    <form method="POST" enctype="multipart/form-data">
-        <h1>Update Blog</h1>
-        {% csrf_token %}
-        
-        <!-- Placing the image inside the form -->
-        <div class="image-container">
-            <img src="/media/{{ updateblog.blog_image }}" alt="{{ updateblog.blog_title }}" class="blog-image" width=390>
-        </div><br><br>
+    <div class="blog-container">
+        <div class="blog-form">
+            <h1>Update Blog</h1>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <p class="success-message">{{ result }}</p>
+                
+                <div class="input-group">
+                    <label for="blog_title">Blog Title:</label>
+                    <input type="text" id="blog_title" name="blog_title" value="{{ updateblog.blog_title }}" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="blog_content">Blog Content:</label>
+                    <textarea id="blog_content" name="blog_content" rows="5" required>{{ updateblog.blog_content }}</textarea>
+                </div>
 
-        <label for="blog_image">Upload Image:</label>
-        <input type="file" id="blog_image" name="blog_image" value="/media/{{ updateblog.blog_image }}"><br><br>
+                <div class="input-group">
+                    <label>Current Image Path:</label>
+                    <input type="text" value="/media/{{ updateblog.blog_image }}" readonly>
+                </div>
+    
+                <!-- Change Image -->
+                <div class="input-group">
+                    <label for="blog_image">Change Image:</label>
+                    <input type="file" id="blog_image" name="blog_image">
+                </div>
+                <button type="submit" class="submit-btn">Update Blog</button>
 
-        <!-- Blog title input -->
-        <label for="blog_title">Blog Title:</label>
-        <input type="text" id="blog_title" name="blog_title" value="{{ updateblog.blog_title }}" required><br><br>
-        
-        <!-- Blog content input -->
-        <label for="blog_content">Blog Content:</label>
-        <textarea id="blog_content" name="blog_content" required rows="12" cols="50">{{ updateblog.blog_content }}</textarea><br><br>
-
-        <!-- Submit button -->
-        <button type="submit">Update Blog</button>
-    </form>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

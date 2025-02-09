@@ -6,26 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Blog</title>
     <link rel="stylesheet" href="{% static 'addblogs.css' %}">
-
 </head>
 <body>
-    <form method="POST" enctype="multipart/form-data">
-        <h1>Add New Blog</h1>
-        {% csrf_token %}
-        <label for="blog_title">Blog Title:</label>
-        <input type="text" id="blog_title" name="blog_title" required><br><br>
-        
-        <label for=" blog_content">Blog Content:</label>
-        <textarea id="blog_content" name="blog_content" required rows=10 cols=50></textarea><br><br>
+    <div class="blog-container">
+        <div class="blog-form">
+            <h1>Add New Blog</h1>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <p class="success-message">{{ result }}</p>
+                
+                <div class="input-group">
+                    <label for="blog_title">Blog Title:</label>
+                    <input type="text" id="blog_title" name="blog_title" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="blog_content">Blog Content:</label>
+                    <textarea id="blog_content" name="blog_content" rows="5" required></textarea>
+                </div>
 
-        <label for="blog_image">Upload Image:</label>
-        <input type="file" id="blog_image" name="blog_image" required><br><br>
+                <div class="input-group">
+                    <label for="blog_image">Upload Image:</label>
+                    <input type="file" id="blog_image" name="blog_image" required>
+                </div>
 
-        <button type="Submit">Add Blog</button>
-        <br>
-        <p>{{result}}</p>
-        <a href="{% url 'home' %}">Back to Home</a>
-    </form>
+                <button type="submit" class="submit-btn">Add Blog</button>
 
+
+                <div class="back-home">
+                    <a href="{% url 'home' %}">Back to Home</a>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

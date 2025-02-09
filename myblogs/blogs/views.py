@@ -11,8 +11,8 @@ def add_blog(request):
         blog_author = request.user
         blog_content = request.POST.get('blog_content')
         blog_image = request.FILES.get('blog_image')
-        blog_detail = Post(blog_title=blog_title,blog_author=blog_author,blog_content=blog_content,blog_image=blog_image)
-        blog_detail.save()
+        blog_detail = Post.objects.create(blog_title=blog_title,blog_author=blog_author,blog_content=blog_content,blog_image=blog_image)
+        # blog_detail.save()
         result = "Blog Added Successfully"
     
     return render(request, 'addblogs.html', {'result':result})

@@ -5,34 +5,45 @@ from django.contrib.auth.decorators import login_required
 from blogs.models import Post
 
 def loginpage(request):
-    result = ""
     if request.method == "POST":
         # Get username and password from login form
         username = request.POST.get('username')
         password = request.POST.get('password')
+
         # check user is authenticate
         user=authenticate(request,username=username,password=password)
+
         # if authenticate then login and else show error
         if user is not None:
             login(request,user)
             return redirect('home')   # After login redirect to home page
         else:
-            result = "Username or Password is Invalid"
+            return render(request, 'login.html', {'error': 'Invalid Credentials.'})
 
-    return render(request, 'login.html', {'result':result})
+    return render(request, 'login.html')
 
 def signuppage(request):
-    if request.method=="POST":
-        # Get username,email and password from signup form
+    if request.method == "POST":
         username = request.POST.get('username')
-        password = request.POST.get('password')
         email = request.POST.get('email')
-        # Add User data to User Model
-        user_data = User.objects.create_user(username,email,password)
+        password = request.POST.get('password')
+        confirmpassword = request.POST.get('confirmpassword')
+
+        if User.objects.filter(username=username).exists():
+            return render(request, "signup.html", {"error": "Username already exists."})
+
+        if User.objects.filter(email=email).exists():
+            return render(request, "signup.html", {"error": "Email already registered."})
+
+        if password != confirmpassword:
+            return render(request, "signup.html", {"error": "Passwords do not match."})
+
+        user_data = User.objects.create_user(username=username, email=email, password=password)
         user_data.save()
-        return redirect("login")         # redirect to login page
+        return redirect("login")
 
     return render(request, "signup.html")
+
 
 def logoutpage(request):
     logout(request)
